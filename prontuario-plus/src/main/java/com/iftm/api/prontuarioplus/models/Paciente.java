@@ -6,7 +6,7 @@ import java.io.Serializable;
 import java.util.Objects;
 
 @Entity
-@Table(name = "medico_table")
+@Table(name = "paciente_table")
 public class Paciente implements Serializable {
 
     @Id
@@ -29,6 +29,10 @@ public class Paciente implements Serializable {
         this.endereco = endereco;
         this.dataNascimento = dataNascimento;
         this.historicoMedico = historicoMedico;
+    }
+
+    public Long getId() {
+        return id;
     }
 
     public String getNome() {
@@ -77,7 +81,7 @@ public class Paciente implements Serializable {
 
     @Override
     public String toString() {
-        return "Medico{" +
+        return "Paciente{" +
                 "id=" + id +
                 ", nome='" + nome + '\'' +
                 ", endereco='" + endereco + '\'' +
