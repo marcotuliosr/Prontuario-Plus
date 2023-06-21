@@ -1,35 +1,24 @@
-package com.iftm.api.prontuarioplus.models;
+package com.iftm.api.prontuarioplus.vo;
 
-import jakarta.persistence.*;
+
+import com.iftm.api.prontuarioplus.models.Paciente;
 
 import java.io.Serializable;
 import java.util.Objects;
 
-@Entity
-@Table(name = "carteira_identidade_table")
-public class CarteiraIdentidade implements Serializable {
+public class CarteiraIdentidadeVO implements Serializable {
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-
-    @Column(name = "numero_identidade", nullable = false)
     private String numeroIdentidade;
-
-    @OneToOne(optional=false)
-    @JoinColumn(name="paciente_id", unique=true, nullable=false, updatable=false)
     private Paciente paciente;
 
-    public CarteiraIdentidade() {
+    public CarteiraIdentidadeVO() {
     }
 
-    public CarteiraIdentidade(String numeroIdentidade, Paciente paciente) {
+    public CarteiraIdentidadeVO(String numeroIdentidade, Paciente paciente) {
         this.numeroIdentidade = numeroIdentidade;
         this.paciente = paciente;
     }
-
-    // Getters e setters
-
 
     public Long getId() {
         return id;
@@ -58,21 +47,21 @@ public class CarteiraIdentidade implements Serializable {
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
-        if (!(o instanceof CarteiraIdentidade)) return false;
-        CarteiraIdentidade that = (CarteiraIdentidade) o;
-        return Objects.equals(id, that.id) && Objects.equals(numeroIdentidade, that.numeroIdentidade);
+        if (!(o instanceof CarteiraIdentidadeVO that)) return false;
+        return Objects.equals(getId(), that.getId()) && Objects.equals(getNumeroIdentidade(), that.getNumeroIdentidade()) && Objects.equals(getPaciente(), that.getPaciente());
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(id, numeroIdentidade);
+        return Objects.hash(getId(), getNumeroIdentidade(), getPaciente());
     }
 
     @Override
     public String toString() {
-        return "CarteiraIdentidade{" +
+        return "CarteiraIdentidadeVO{" +
                 "id=" + id +
                 ", numeroIdentidade='" + numeroIdentidade + '\'' +
+                ", paciente=" + paciente +
                 '}';
     }
 }

@@ -1,44 +1,31 @@
-package com.iftm.api.prontuarioplus.models;
+package com.iftm.api.prontuarioplus.vo;
 
-import jakarta.persistence.*;
+
+import com.iftm.api.prontuarioplus.models.Consulta;
+import com.iftm.api.prontuarioplus.models.Medico;
+import com.iftm.api.prontuarioplus.models.Paciente;
+
 import java.io.Serializable;
 import java.time.LocalDateTime;
 import java.util.Objects;
 
-@Entity
-@Table(name = "consulta_table")
-public class Consulta implements Serializable {
+public class ConsultaVO implements Serializable {
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-
-    @Column(name = "data_hora_consulta", nullable = false)
     private LocalDateTime dataHoraConsulta;
-
-    @Column(name = "area_medica", nullable = false)
     private String areaMedica;
-
-    @ManyToOne(optional = false)
-    @JoinColumn(name = "paciente_id", nullable = false)
     private Paciente paciente;
-
-    @ManyToOne(optional = false)
-    @JoinColumn(name = "medico_id", nullable = false)
     private Medico medico;
 
-    public Consulta() {
+    public ConsultaVO() {
     }
 
-    public Consulta(LocalDateTime dataHoraConsulta, String areaMedica, Paciente paciente, Medico medico) {
+    public ConsultaVO(LocalDateTime dataHoraConsulta, String areaMedica, Paciente paciente, Medico medico) {
         this.dataHoraConsulta = dataHoraConsulta;
         this.areaMedica = areaMedica;
         this.paciente = paciente;
         this.medico = medico;
     }
-
-    // Getters e setters
-
 
     public Long getId() {
         return id;
@@ -84,7 +71,7 @@ public class Consulta implements Serializable {
     public boolean equals(Object o) {
         if (this == o) return true;
         if (!(o instanceof Consulta)) return false;
-        Consulta consulta = (Consulta) o;
+        ConsultaVO consulta = (ConsultaVO) o;
         return Objects.equals(id, consulta.id);
     }
 
