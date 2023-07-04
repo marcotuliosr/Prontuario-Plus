@@ -1,9 +1,20 @@
 package com.iftm.api.prontuarioplus.models;
 
 import jakarta.persistence.*;
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
 
 import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Objects;
+
+@NoArgsConstructor
+@AllArgsConstructor
+@Getter
+@Setter
 
 @Entity
 @Table(name = "paciente_table")
@@ -12,81 +23,16 @@ public class Paciente implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+
     @Column(name = "nome", nullable = false)
     private String nome;
+
     @Column(name = "endereco", nullable = false)
     private String endereco;
+
     @Column(name = "dataNascimento", nullable = false)
     private String dataNascimento;
+
     @Column(name = "historico_medico", nullable = false)
     private String historicoMedico;
-
-    public Paciente() {
-    }
-
-    public Paciente(String nome, String endereco, String dataNascimento, String historicoMedico) {
-        this.nome = nome;
-        this.endereco = endereco;
-        this.dataNascimento = dataNascimento;
-        this.historicoMedico = historicoMedico;
-    }
-
-    public Long getId() {
-        return id;
-    }
-
-    public String getNome() {
-        return nome;
-    }
-
-    public void setNome(String nome) {
-        this.nome = nome;
-    }
-
-    public String getEndereco() {
-        return endereco;
-    }
-
-    public void setEndereco(String endereco) {
-        this.endereco = endereco;
-    }
-
-    public String getDataNascimento() {
-        return dataNascimento;
-    }
-
-    public void setDataNascimento(String dataNascimento) {
-        this.dataNascimento = dataNascimento;
-    }
-
-    public String getHistoricoMedico() {
-        return historicoMedico;
-    }
-
-    public void setHistoricoMedico(String historicoMedico) {
-        this.historicoMedico = historicoMedico;
-    }
-
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (!(o instanceof Paciente medico)) return false;
-        return Objects.equals(id, medico.id) && Objects.equals(getNome(), medico.getNome()) && Objects.equals(getEndereco(), medico.getEndereco()) && Objects.equals(getDataNascimento(), medico.getDataNascimento()) && Objects.equals(getHistoricoMedico(), medico.getHistoricoMedico());
-    }
-
-    @Override
-    public int hashCode() {
-        return Objects.hash(id, getNome(), getEndereco(), getDataNascimento(), getHistoricoMedico());
-    }
-
-    @Override
-    public String toString() {
-        return "Paciente{" +
-                "id=" + id +
-                ", nome='" + nome + '\'' +
-                ", endereco='" + endereco + '\'' +
-                ", dataNascimento='" + dataNascimento + '\'' +
-                ", historicoMedico='" + historicoMedico + '\'' +
-                '}';
-    }
 }
