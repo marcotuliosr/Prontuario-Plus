@@ -12,7 +12,7 @@ public class OpenApiConfig {
     public OpenAPI customOpenAPI() {
         return new OpenAPI()
                 .info(new Info()
-                        .title("Documentação da API sobre o Sistem EASY-SALES")
+                        .title("Documentação da API de Prontuario - prontuario-plus")
                         .version("Version 1 (v1)")
                         .description("Esta documentação apresenta os endpoints!")
                         .termsOfService("http://mytersm.com")
