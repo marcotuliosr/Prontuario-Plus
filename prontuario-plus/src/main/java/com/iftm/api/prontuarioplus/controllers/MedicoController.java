@@ -1,14 +1,10 @@
 package com.iftm.api.prontuarioplus.controllers;
 
-import com.iftm.api.prontuarioplus.data.vo.CarteiraIdentidadeVO;
-import com.iftm.api.prontuarioplus.models.Medico;
-import com.iftm.api.prontuarioplus.services.CarteiraIdentidadeService;
+
 import com.iftm.api.prontuarioplus.services.MedicoService;
 import com.iftm.api.prontuarioplus.data.vo.MedicoVO;
 import com.iftm.api.prontuarioplus.utils.MediaType;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpStatus;
-import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;

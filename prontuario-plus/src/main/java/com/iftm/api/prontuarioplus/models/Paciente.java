@@ -22,6 +22,7 @@ public class Paciente implements Serializable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "pacienteid")
     private Long id;
 
     @Column(name = "nome", nullable = false)
@@ -35,4 +36,8 @@ public class Paciente implements Serializable {
 
     @Column(name = "historico_medico", nullable = false)
     private String historicoMedico;
+
+    //PACIENTE TEM UMA LISTA DE CARTEIRA DE IDENTIDADE
+    @OneToMany(mappedBy = "paciente", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+    private List<CarteiraIdentidade> carteiraIdentidadeList = new ArrayList<>();
 }

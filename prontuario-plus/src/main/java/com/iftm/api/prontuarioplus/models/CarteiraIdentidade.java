@@ -25,7 +25,13 @@ public class CarteiraIdentidade implements Serializable {
     @Column(name = "numero_identidade", nullable = false)
     private String numeroIdentidade;
 
-    @OneToOne(optional=false)
-    @JoinColumn(name="paciente_id", unique=true, nullable=false, updatable=false)
+    // @OneToOne(optional=false)
+    // @JoinColumn(name="paciente_id", unique=true, nullable=false, updatable=false)
+    // private Paciente paciente;
+
+    //CART IDENTIDADE TEM UM PACIENTE
+    @ManyToOne(optional = false)
+    @JoinColumn(name = "pacienteid")
     private Paciente paciente;
+
 }

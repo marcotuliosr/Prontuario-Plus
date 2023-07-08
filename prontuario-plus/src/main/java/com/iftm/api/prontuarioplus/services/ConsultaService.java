@@ -44,13 +44,13 @@ public class ConsultaService {
         return dbVO;
     }
 
-    public ConsultaVO save(ConsultaVO carteiraIdentidadeVO) throws Exception {
-        if(carteiraIdentidadeVO == null) throw new RequiredObjectIsNullException("Objeto está nulo");
-        Consulta entity = DozerMapper.parseObject(carteiraIdentidadeVO, Consulta.class);
+    public ConsultaVO save(ConsultaVO consultaVO) throws Exception {
+        if(consultaVO == null) throw new RequiredObjectIsNullException("Objeto está nulo");
+        Consulta entity = DozerMapper.parseObject(consultaVO, Consulta.class);
         entity = repository.save(entity);
-        carteiraIdentidadeVO = DozerMapper.parseObject(entity, ConsultaVO.class);
-        carteiraIdentidadeVO.add(linkTo(methodOn(ConsultaController.class).findById(carteiraIdentidadeVO.getId())).withSelfRel());
-        return carteiraIdentidadeVO;
+        consultaVO = DozerMapper.parseObject(entity, ConsultaVO.class);
+        consultaVO.add(linkTo(methodOn(ConsultaController.class).findById(consultaVO.getId())).withSelfRel());
+        return consultaVO;
     }
 
     public ConsultaVO update(ConsultaVO carteiraIdentidadeVO) throws Exception {
